@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+backend/node_modules/
+
+# Variables privadas
+.env
+backend/.env
+
+# Fotos subidas por usuarios
+backend/uploads/profiles/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

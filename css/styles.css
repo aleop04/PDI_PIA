@@ -1,0 +1,4946 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400&family=League+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400&family=Nunito+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=League+Spartan:wght@400&family=League+Gothic&family=Libre+Franklin:wght@200&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-content {
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+  /* ------ bottom nav en pantallas despues de login y register ------ */
+#bottom-nav {
+  width: 100%;
+  flex-shrink: 0;
+
+  display: flex;
+
+  background: #FBF7EC;
+
+  border-top: 1px solid rgba(28, 42, 30, 0.08);
+
+  padding: 9px 6px 12px;
+}
+
+.nav-btn {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+
+  border: none;
+  background: none;
+
+  cursor: pointer;
+
+  padding: 4px 0;
+
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+
+  color: rgba(28, 42, 30, 0.5);
+}
+
+.nav-btn.active {
+  color: #B10000;
+}
+  /* ------ fin de bottom nav en pantallas despues de login y register ------ */
+
+  /* ------ header en pantallas despues de login y registrar (menos scan.js) ------ */
+
+#header {
+  flex-shrink: 0;
+  display: none;
+}
+
+.app-header {
+  width: 100%;
+  height: 55px;
+
+  padding: 15px 25px;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botones */
+
+.header-user,
+.header-logout {
+  width: 25px;
+  height: 25px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.header-user img,
+.header-logout img {
+  width: 25px;
+  height: 25px;
+
+  object-fit: contain;
+}
+
+/* Logo */
+
+.header-logo {
+  width: 186px;
+  height: 17px;
+
+  object-fit: contain;
+}
+  /* ------ fin de header en pantallas despues de login y registrar (menos scan.js) ------ */
+
+  /* ------ INTRO.JS ------ */
+
+  /* fondo de la pantalla intro.js + su contenido */
+.intro-screen {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/landing1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-top: 70px;
+}
+
+.intro-logo {
+  width: 334px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 29px;
+}
+
+.intro-logo img:first-child {
+  width: 106px;
+  height: 116px;
+}
+
+.intro-logo img:last-child {
+  width: 329px;
+  height: 34px;
+}
+
+.intro-description {
+  width: 334px;
+
+  margin: 17px 0 0;
+
+  text-align: center;
+
+  color: white;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 2.24px;
+}
+
+.intro-buttons {
+  width: 349px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+
+  margin-top: 300px;
+}
+
+.intro-button {
+  width: 100%;
+  height: 66px;
+
+  border: none;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 1.8px;
+
+  cursor: pointer;
+}
+
+.login-button {
+  background: rgba(1, 4, 68, 0.952);
+  color: white;
+}
+
+.register-button {
+  background: rgba(255, 255, 255, 0.10);
+  color: rgb(255, 255, 255);
+}
+
+/* ------ FIN DE INTRO.JS ------ */
+
+/* ------ animacion slide de pantallas ------ */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.4s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+/* ------ LOGIN.JS ------ */
+
+.login-screen {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+    background: #212340;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* EFECTOS DE LUZ EN EL FONDO */
+
+.login-glow {
+  position: absolute;
+
+  width: 317px;
+  height: 317px;
+
+  border-radius: 50%;
+
+  filter: blur(67.2px);
+
+  pointer-events: none;
+}
+
+
+/* Luz negra */
+
+.login-glow-black {
+  left: -70px;
+  top: -80px;
+
+  background: #0A0A0A;
+
+  opacity: 0.9;
+}
+
+
+/* Luz azul */
+
+.login-glow-blue {
+  left: 247px;
+  top: 79px;
+
+  background: #00043B;
+
+  opacity: 0.9;
+}
+
+
+/* boton de regresar */
+
+.login-back {
+  position: absolute;
+
+  left: 29px;
+  top: 32px;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+}
+
+
+.login-back img {
+  width: 24px;
+  height: 24px;
+
+  filter: brightness(0) invert(1);
+}
+
+
+/* contenido */
+
+.login-welcome {
+  position: absolute;
+
+  width: 100%;
+
+  left: 0;
+  top: 79px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 13px;
+
+  z-index: 2;
+}
+
+
+/* Logo */
+
+.login-logo {
+  width: 129px;
+  height: 142px;
+
+  object-fit: contain;
+}
+
+
+/* Texto */
+
+.login-welcome-text {
+  width: 271px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 6px;
+
+  text-align: center;
+}
+
+
+.login-welcome-text h1 {
+  margin: 0;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 36px;
+  font-weight: 400;
+
+  letter-spacing: 1.8px;
+
+  line-height: 1;
+}
+
+
+.login-welcome-text p {
+  margin: 0;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  line-height: 1;
+}
+
+.login-card {
+  position: absolute;
+
+  width: 100%;
+
+  left: 0;
+  top: 365px;
+
+  padding-top: 67px;
+  padding-bottom: 30px;
+
+  background: white;
+
+  border-radius: 62px 62px 0 0;
+
+  box-sizing: border-box;
+
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Contenido interno */
+
+.login-card-content {
+  width: 318px;
+
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 77px;
+}
+
+.login-decorations {
+  position: absolute;
+
+  width: 538.98px;
+  height: 575.46px;
+
+  left: 50%;
+  top: 0;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  overflow: hidden;
+}
+
+
+.login-decoration {
+  position: absolute;
+
+  object-fit: contain;
+}
+
+
+/* Pelota superior izquierda */
+
+.login-decoration-1 {
+  width: 126.93px;
+  height: 129.57px;
+
+  left: 73.03px;
+  top: 14.64px;
+
+  transform: rotate(43deg);
+
+  transform-origin: top left;
+}
+
+
+/* Pelota superior derecha */
+
+.login-decoration-2 {
+  width: 110.34px;
+  height: 112.63px;
+
+  left: 386.94px;
+  top: 49.19px;
+
+  transform: rotate(-13deg);
+
+  transform-origin: top left;
+}
+
+
+/* Pelota inferior izquierda */
+
+.login-decoration-3 {
+  width: 146.49px;
+  height: 149.54px;
+
+  left: -22.06px;
+  top: 401.44px;
+
+  transform: rotate(-13deg);
+
+  transform-origin: top left;
+}
+
+
+/* Pelota inferior derecha */
+
+.login-decoration-4 {
+  width: 126.04px;
+  height: 128.66px;
+
+  left: 428.62px;
+  top: 310.29px;
+
+  transform: rotate(14deg);
+
+  transform-origin: top left;
+}
+
+.login-main-content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 72px;
+}
+
+.login-title {
+  width: 219px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 14px;
+
+  text-align: center;
+}
+
+
+.login-title h2 {
+  margin: 0;
+
+  color: #930000;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 36px;
+  font-weight: 400;
+
+  letter-spacing: 1.8px;
+
+  line-height: 1;
+}
+
+
+.login-title p {
+  margin: 0;
+
+  color: #000;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  line-height: 1;
+}
+
+.login-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 37px;
+}
+
+
+/* Campos */
+
+.login-field {
+  width: 100%;
+  height: 44px;
+
+  box-sizing: border-box;
+
+  padding: 9px 15px;
+
+  background: rgba(194, 194, 194, 0.31);
+
+  border-radius: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+
+/* Iconos */
+
+.login-field img {
+  width: 26px;
+  height: 26px;
+
+  object-fit: contain;
+
+  opacity: 0.65;
+}
+
+
+/* Inputs */
+
+.login-field input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: 'Nunito', sans-serif;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  letter-spacing: 0.8px;
+
+  color: #333;
+}
+
+
+.login-field input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+.login-submit {
+  width: 143px;
+  height: 45px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 36px;
+
+  background: #B10000;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 30px;
+  font-weight: 400;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+
+.login-submit:hover {
+  transform: scale(1.03);
+
+  background: #930000;
+}
+
+
+.login-submit:active {
+  transform: scale(0.97);
+}
+
+.login-copyright {
+  margin: 0;
+
+  color: #939393;
+
+  font-family: 'League Gothic', sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  letter-spacing: 0.8px;
+
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+    .login-screen {
+        max-width: 100%;
+    }
+}
+/* ------ FIN LOGIN.JS ------ */
+
+
+/* ------ REGISTER.JS ------ */
+
+.register-screen {
+
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    overflow-x: hidden;
+    background: #212340;
+    font-family: 'Nunito', sans-serif;
+}
+
+
+/* EFECTOS DE LUZ EN EL FONDO */
+
+.register-glow {
+
+    position: absolute;
+    width: 317px;
+    height: 317px;
+    border-radius: 50%;
+    filter: blur(67.2px);
+    pointer-events: none;
+}
+
+
+/* Luz negra */
+
+.register-glow-black {
+
+    left: -70px;
+    top: -80px;
+    background: #0A0A0A;
+    opacity: 0.9;
+}
+
+
+/* Luz azul */
+
+.register-glow-blue {
+
+    left: 247px;
+    top: 79px;
+    background: #00043B;
+    opacity: 0.9;
+}
+
+
+/* Botón de regresar */
+
+.register-back {
+
+    position: absolute;
+    left: 29px;
+    top: 32px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+.register-back img {
+
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* ENCABEZADO */
+
+.register-welcome {
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 79px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    z-index: 2;
+}
+
+
+/* Logo */
+
+.register-logo {
+
+    width: 129px;
+    height: 142px;
+    object-fit: contain;
+}
+
+
+/* Texto de bienvenida */
+
+.register-welcome-text {
+
+    width: 271px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+
+.register-welcome-text h1 {
+
+    margin: 0;
+    color: white;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 1.8px;
+    line-height: 1;
+}
+
+
+/* TARJETA */
+
+.register-card {
+
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 365px;
+    padding-top: 67px;
+    padding-bottom: 30px;
+    background: white;
+    border-radius: 62px 62px 0 0;
+    box-sizing: border-box;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Contenido interno */
+
+.register-card-content {
+
+    width: 318px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 52px;
+}
+
+
+/* Pelotas decorativas */
+
+.register-decorations {
+
+    position: absolute;
+    width: 538.98px;
+    height: 575.46px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+
+.register-decoration {
+
+    position: absolute;
+    object-fit: contain;
+}
+
+
+/* Pelota superior izquierda */
+
+.register-decoration-1 {
+
+    width: 126.93px;
+    height: 129.57px;
+    left: 73.03px;
+    top: 14.64px;
+    transform: rotate(43deg);
+    transform-origin: top left;
+}
+
+
+/* Pelota superior derecha */
+
+.register-decoration-2 {
+
+    width: 110.34px;
+    height: 112.63px;
+    left: 386.94px;
+    top: 49.19px;
+    transform: rotate(-13deg);
+    transform-origin: top left;
+}
+
+
+/* Pelota inferior izquierda */
+
+.register-decoration-3 {
+
+    width: 146.49px;
+    height: 149.54px;
+    left: -22.06px;
+    top: 401.44px;
+    transform: rotate(-13deg);
+    transform-origin: top left;
+}
+
+
+/* Pelota inferior derecha */
+
+.register-decoration-4 {
+
+    width: 126.04px;
+    height: 128.66px;
+    left: 428.62px;
+    top: 310.29px;
+    transform: rotate(14deg);
+    transform-origin: top left;
+}
+
+
+/* CONTENIDO PRINCIPAL */
+
+.register-main-content {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 72px;
+}
+
+
+/* Título */
+
+.register-title {
+
+    width: 219px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+
+.register-title h2 {
+
+    margin: 0;
+    color: #930000;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 1.8px;
+    line-height: 1;
+}
+
+
+.register-title p {
+
+    margin: 0;
+    color: #000;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+
+/* FORMULARIO */
+
+.register-form {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+}
+
+
+/* Campos */
+
+.register-field {
+
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 9px 15px;
+    background: rgba(194, 194, 194, 0.31);
+    border-radius: 46px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+
+/* Iconos */
+
+.register-field > img {
+
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    opacity: 0.65;
+}
+
+
+/* Inputs */
+
+.register-field input {
+
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #333;
+}
+
+
+.register-field input::placeholder {
+
+    color: #888;
+    opacity: 1;
+}
+
+
+/* Contraseña */
+
+.register-password {
+
+    position: relative;
+    padding-right: 48px;
+}
+
+
+/* Botón mostrar/ocultar contraseña */
+
+.password-toggle {
+
+    position: absolute;
+    right: 15px;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.password-toggle img {
+
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* BOTÓN REGISTRARSE */
+
+.register-submit {
+
+    width: 143px;
+    height: 45px;
+    padding: 0;
+    border: none;
+    border-radius: 36px;
+    background: #B10000;
+    color: white;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+
+.register-submit:hover {
+
+    transform: scale(1.03);
+    background: #930000;
+}
+
+
+.register-submit:active {
+
+    transform: scale(0.97);
+}
+
+/* Copyright */
+
+.register-copyright {
+
+    margin: 0;
+    color: #939393;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    text-align: center;
+}
+
+/* RESPONSIVE PARA ESCRITORIO */
+
+@media (min-width: 768px) {
+
+    .register-screen {
+
+        max-width: 100%;
+    }
+}
+
+
+/* ------ FIN DE REGISTER.JS ------ */
+
+
+  /* ------ HOME.JS ------ */
+.home-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 33px;
+}
+.home-banner-container {
+  width: 100%;
+}
+/* Imagen principal */
+.home-banner {
+  width: 100%;
+  height: 133px;
+
+  object-fit: cover;
+  display: block;
+}
+/* Contenido */
+.home-content {
+  width: 381px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 13px;
+}
+/* Título */
+.home-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+/* Descripción */
+.home-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+
+  letter-spacing: 0.7px;
+
+  line-height: 1.4;
+}
+
+.home-options {
+  width: calc(100% - 17px);
+  max-width: 415px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 23px;
+
+  padding-bottom: 30px;
+}
+
+
+/* Tarjeta */
+.home-card {
+  width: 100%;
+  height: 198px;
+
+  padding: 30px 28px 30px 27px;
+
+  border: none;
+  border-radius: 28px;
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+/* Primera tarjeta */
+.home-card-history {
+  background-image: url("../images/azul.png");
+}
+/* Segunda tarjeta */
+.home-card-games {
+  background-image: url("../images/cafe.png");
+}
+/* Contenido */
+.home-card-content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+}
+/* Fila título + icono */
+.home-card-title-row {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Título */
+.home-card-title {
+  color: white;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+/* Iconos */
+.home-card-icon {
+  width: 48px;
+  height: 48px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+/* Descripción */
+.home-card-description {
+  width: 100%;
+
+  color: white;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+/* Efecto al tocar */
+.home-card:active {
+  transform: scale(0.98);
+}
+  /* ------ FIN DE HOME.JS ------ */
+
+
+/* ------ SCAN.JS ------ */
+.scan-screen {
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: relative;
+  overflow: hidden;
+}
+/* Header azul */
+.scan-header {
+  width: 100%;
+  height: 71px;
+
+  background: #212340;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+.scan-header img {
+  width: 279px;
+  height: auto;
+  object-fit: contain;
+}
+/* Área donde ocurre el escaneo */
+.scan-camera {
+  position: absolute;
+
+  top: 71px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: black;
+}
+/* Marco de escaneo */
+.scan-frame {
+  position: absolute;
+
+  top: 18%;
+  left: 12%;
+  right: 12%;
+  bottom: 30%;
+}
+/* Esquinas */
+.scan-corner {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+
+  border-color: rgba(255, 255, 255, 0.9);
+}
+/* Superior izquierda */
+.scan-corner-tl {
+  top: 0;
+  left: 0;
+
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+}
+/* Superior derecha */
+.scan-corner-tr {
+  top: 0;
+  right: 0;
+
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+}
+/* Inferior izquierda */
+.scan-corner-bl {
+  bottom: 0;
+  left: 0;
+
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+}
+/* Inferior derecha */
+.scan-corner-br {
+  bottom: 0;
+  right: 0;
+
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+}
+/* Texto */
+.scan-instruction {
+  position: absolute;
+
+  top: 60%;
+  left: 0;
+  right: 0;
+
+  text-align: center;
+
+  color: white;
+
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  padding: 0 20px;
+}
+/* ------ FIN DE SCAN.JS ------ */
+
+/* ------ HISTORY.JS ------ */
+.history-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.history-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/history.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+/* Título sobre la imagen */
+
+.history-banner-title {
+  width: 100%;
+  max-width: 866px;
+
+  text-align: center;
+
+  color: #820002;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: clamp(45px, 13vw, 195px);
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+/* Contenido inferior */
+.history-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+/* Título */
+.history-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+/* Descripción */
+.history-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+
+  line-height: 1.4;
+}
+
+.history-options {
+    width: 743px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 339px);
+
+    gap: 60px 65px;
+
+    padding-bottom: 60px;
+}
+
+
+/* Tarjeta */
+
+.history-card {
+    width: 339px;
+    height: 223px;
+
+    padding: 32px 50px 32px 51px;
+
+    border: none;
+    border-radius: 44px;
+
+    background: linear-gradient(
+        180deg,
+        #0B5AA5 0%,
+        #212340 100%
+    );
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Contenido de cada tarjeta */
+
+.history-card-content {
+    width: 238px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+/* Iconos */
+
+.history-card-icon {
+    width: 73px;
+    height: 71px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* Título */
+
+.history-card-title {
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+/* Descripción */
+
+.history-card-description {
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    line-height: 1.2;
+}
+
+
+/* ------ ANIMACIÓN HOVER ------ */
+
+.history-card:hover {
+    transform: translateY(-5px) scale(1.02);
+
+    filter: brightness(1.08);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Al hacer click */
+
+.history-card:active {
+    transform: translateY(-1px) scale(0.98);
+
+    filter: brightness(0.95);
+}
+
+
+/* ------ RESPONSIVE ------ */
+
+@media (max-width: 767px) {
+
+    .history-screen {
+        gap: 35px;
+    }
+
+
+    /* Imagen */
+
+    .history-banner {
+        height: 230px;
+    }
+
+
+    .history-banner-title {
+        font-size: clamp(45px, 15vw, 90px);
+    }
+
+
+    /* Contenido */
+
+    .history-content {
+        width: 100%;
+        max-width: calc(100% - 40px);
+
+        gap: 25px;
+    }
+
+    .history-content h1 {
+        font-size: 40px;
+    }
+
+    .history-content p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+
+    /* Botones */
+
+    .history-options {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 23px;
+
+        padding: 0 20px 40px;
+    }
+
+
+    .history-card {
+        width: 100%;
+        max-width: 339px;
+
+        height: 223px;
+
+        margin: 0 auto;
+    }
+
+}
+
+/* ------ FIN HISTORY.JS ------ */
+
+
+
+/* ------ EQUIPOS.JS ------ */
+.teams-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.teams-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/equipos.webp");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+
+/* Contenido inferior */
+
+.teams-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.teams-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.teams-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Contenedor de todos los equipos */
+
+.teams-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  column-gap: 40px;
+  row-gap: 50px;
+
+  padding-bottom: 60px;
+}
+
+
+/* Tarjeta individual */
+
+.team-card {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 13px;
+}
+
+
+/* Nombre del equipo */
+
+.team-card h2 {
+  width: 100%;
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Jaro', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+
+/* Contenedor del video y filtros */
+
+.team-media {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+/* Placeholder del futuro video */
+
+.team-video {
+
+  width: 100%;
+  height: 143px;
+
+  display: block;
+
+  object-fit: cover;
+
+  background: black;
+
+  border: none;
+
+}
+
+
+/* Contenedor de filtros */
+
+.team-filters {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* Filtro individual */
+
+.filter {
+
+  width: 22px;
+  height: 22px;
+
+  padding: 0;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  /* Quitar apariencia predeterminada del botón */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* Obligar al fondo a respetar el círculo */
+  overflow: hidden;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+
+}
+
+
+/* Colores filtros */
+
+.filter-normal {
+  background: #D9D9D9;
+}
+
+.filter-blur {
+  background: #7D7D7D;
+}
+
+.filter-thermal {
+
+  background: radial-gradient(
+    circle,
+    yellow,
+    red,
+    cyan,
+    blue
+  );
+
+}
+
+.filter-color {
+
+  background: radial-gradient(
+    circle,
+    yellow,
+    red,
+    green,
+    blue
+  );
+
+}
+
+.filter-custom {
+
+  background: radial-gradient(
+    circle,
+    #fff0ad,
+    #ffb6d9,
+    #b8e8ff
+  );
+
+}
+
+.filter.active {
+
+  border-color: black;
+
+  transform: scale(1.2);
+
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.team-video-wrapper {
+
+  width: 100%;
+  height: 143px;
+
+  position: relative;
+
+  background: #D9D9D9;
+
+  overflow: hidden;
+
+}
+
+
+.team-video {
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  background: black;
+
+}
+
+
+.team-video-play {
+
+  width: 55px;
+  height: 55px;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  color: white;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+}
+/* ------ FIN DE EQUIPOS.JS ------ */
+
+
+
+/* ------ ESTADISTICAS.JS ------ */
+.stadistics-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.stadistics-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/stadistics.webp");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+
+/* Contenido inferior */
+
+.stadistics-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.stadistics-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.stadistics-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Lista de equipos */
+
+.stadistics-teams {
+  width: 385px;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding-bottom: 60px;
+}
+
+
+/* Contenedor completo de cada equipo */
+
+.stadistics-team-item {
+  width: 100%;
+
+  background: var(--team-color);
+
+  border-radius: 28px;
+
+  overflow: hidden;
+}
+
+
+/* Botón superior de cada equipo */
+
+.stadistics-team {
+  width: 100%;
+  height: 50px;
+
+  padding: 1px 11px 1px 15px;
+
+  background: transparent;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+
+/* Nombre del equipo */
+
+.stadistics-team-name {
+  flex: 1;
+
+  text-align: left;
+
+  color: white;
+
+  font-family: 'Jaro', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+/* Chevron */
+
+.stadistics-chevron {
+  width: 43px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+
+/* Contenido desplegable */
+
+.stadistics-team-content {
+  display: none;
+
+  padding: 18px 10px 28px;
+}
+
+
+/* Estado abierto */
+
+.stadistics-team-item.open .stadistics-team-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 33px;
+}
+
+
+/* Sección de Bateo / Pitcheo */
+
+.stadistics-section {
+  width: 100%;
+}
+
+
+/* Títulos internos */
+
+.stadistics-section h2 {
+  width: 100%;
+
+  margin: 0 0 3px;
+
+  color: black;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1.4px;
+
+  text-align: left;
+}
+
+
+/* Línea blanca */
+
+.stadistics-divider {
+  width: 100%;
+  height: 1px;
+
+  margin-bottom: 7px;
+
+  background: white;
+}
+
+
+/* Contenedor de tabla */
+
+.stadistics-table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* Tabla */
+
+.stadistics-table {
+  width: 100%;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+
+/* Primera columna: nombre */
+
+.stadistics-table th:first-child,
+.stadistics-table td:first-child {
+  width: 40%;
+
+  text-align: left;
+}
+
+
+/* Columnas numéricas */
+
+.stadistics-table th:not(:first-child),
+.stadistics-table td:not(:first-child) {
+  text-align: center;
+}
+
+
+/* Encabezados de tabla */
+
+.stadistics-table th {
+  padding: 0 2px 3px;
+
+  color: #0084FF;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: 1.05px;
+
+  white-space: nowrap;
+}
+
+
+/* Datos de tabla */
+
+.stadistics-table td {
+  padding: 1px 2px;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.77px;
+
+  white-space: nowrap;
+}
+
+/* ------ FIN DE ESTADISTICAS.JS ------ */
+
+
+
+/* ------ HISTORIA.JS ------ */
+.historia-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.historia-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/historia.webp");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+
+/* Contenido inferior */
+
+.historia-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.historia-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.historia-content > p {
+  width: 100%;
+  margin: 0;
+
+  text-align: center;
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Lista de equipos */
+
+.historia-teams {
+  width: 385px;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding-bottom: 60px;
+}
+
+
+/* Contenedor de cada equipo */
+
+.historia-team-item {
+  width: 100%;
+
+  background: var(--team-color);
+
+  border-radius: 28px;
+
+  overflow: hidden;
+}
+
+
+/* Botón */
+
+.historia-team-button {
+  width: 100%;
+  height: 50px;
+
+  padding: 1px 11px 1px 15px;
+
+  background: transparent;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+
+/* Nombre */
+
+.historia-team-name {
+  flex: 1;
+
+  text-align: left;
+
+  color: white;
+
+  font-family: 'Jaro', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+/* Chevron */
+
+.historia-chevron {
+  width: 43px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+}
+
+
+/* Contenido cerrado */
+
+.historia-team-info {
+  display: none;
+}
+
+
+/* Contenido abierto */
+
+.historia-team-item.open .historia-team-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding: 10px 20px 30px;
+}
+
+
+/* Texto de historia */
+
+.historia-team-text {
+  width: 100%;
+  margin: 0;
+
+  color: white;
+
+  text-align: left;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1.4px;
+  line-height: normal;
+
+  overflow-wrap: break-word;
+}
+
+
+/* Imagen opcional */
+
+.historia-team-image {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  border-radius: 16px;
+
+  object-fit: cover;
+}
+/* ------ FIN DE HISTORIA.JS ------ */
+
+
+
+/* ------ GAMES.JS ------ */
+.games-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.games-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/games.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+
+/* Título sobre la imagen */
+
+.games-banner-title {
+  width: 100%;
+  max-width: 866px;
+
+  text-align: center;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: clamp(45px, 13vw, 195px);
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+
+/* Contenido inferior */
+
+.games-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.games-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.games-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.games-buttons {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 24px;
+
+  margin-top: 35px;
+  margin-bottom: 45px;
+}
+
+
+/* Tarjeta */
+
+.games-card {
+  width: 100%;
+  max-width: 415px;
+  height: 198px;
+
+  padding: 30px 27px;
+
+  border: none;
+  border-radius: 28px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Elimina estilo normal del botón */
+
+.games-card {
+  font-family: inherit;
+}
+
+
+/* Contenido interno */
+
+.games-card-inner {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 52px;
+}
+
+
+/* Títulos */
+
+.games-card-title {
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 36px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+
+/* Descripciones */
+
+.games-card-description {
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+}
+
+
+/* Memorama */
+
+.memorama-title {
+  color: #ff7300;
+}
+
+.memorama-description {
+  color: white;
+}
+
+.memorama-game-card {
+  background-image: url("../images/memoramafoto.jpg");
+}
+
+
+/* atrapa la pelota */
+
+.atrapa-title {
+  color: #ff191d;
+}
+
+.atrapa-description {
+  color: black;
+}
+
+.atrapa-card {
+  background-image: url("../images/atrapapelota.jpg");
+}
+
+
+/* home run */
+
+.homerun-title {
+  color: #0074c7;
+}
+
+.homerun-description {
+  color: #497ad4;
+}
+
+.homerun-card {
+  background-image: url("../images/homerun.jpg");
+}
+
+
+
+/* MEMORAMA JUEGO */
+
+/* Memorama */
+
+.memorama-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.memorama-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/memorama2.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+/* Contenido inferior */
+
+.memorama-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.memorama-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.memorama-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* pantalla inicial */
+
+.memorama-start {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 18px;
+
+}
+
+
+/* boton comenzar */
+
+.memorama-start-button {
+
+  width: 220px;
+
+  height: 65px;
+
+  margin-top: 20px;
+
+  margin-bottom: 40px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background: #ff7300;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 0 #b84f00;
+
+  animation: startPulse 1.5s infinite;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+/* Al presionar */
+
+.memorama-start-button:active {
+
+  transform: translateY(6px);
+
+  box-shadow: 0 2px 0 #b84f00;
+
+}
+
+
+/* zona de juego */
+
+.memorama-game {
+
+  width: 100%;
+
+  display: none;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+
+}
+
+
+.memorama-game h2 {
+
+  font-family: "Nunito", sans-serif;
+
+}
+
+
+/* Cuando comienza */
+
+.memorama-game.show {
+
+  display: flex;
+
+  animation: gameAppear 0.4s ease;
+
+}
+
+
+/* Ocultar introducción */
+
+.memorama-start.hide {
+
+  display: none;
+
+}
+
+.memorama-game-info {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 40px;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+}
+
+
+/* -------------------------
+   TABLERO
+------------------------- */
+
+.memorama-board {
+
+  width: calc(100% - 30px);
+
+  max-width: 500px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+
+}
+
+
+/* -------------------------
+   CARTA
+------------------------- */
+
+.memorama-card {
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  perspective: 1000px;
+
+}
+
+
+/* Contenedor que gira */
+
+.memorama-card-inner {
+
+  width: 100%;
+
+  height: 100%;
+
+  position: relative;
+
+  transition: transform 0.5s ease;
+
+  transform-style: preserve-3d;
+
+}
+
+
+/* Girar */
+
+.memorama-card.flipped
+.memorama-card-inner {
+
+  transform: rotateY(180deg);
+
+}
+
+
+/* Ambas caras */
+
+.memorama-card-front,
+.memorama-card-back {
+
+  width: 100%;
+
+  height: 100%;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  border-radius: 15px;
+
+  backface-visibility: hidden;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+/* -------------------------
+   PARTE TRASERA
+------------------------- */
+
+.memorama-card-back {
+
+  background: #ff7300;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 38px;
+
+  font-weight: 900;
+
+  box-shadow: 0 5px 0 #b84f00;
+
+}
+
+
+/* -------------------------
+   PARTE FRONTAL
+------------------------- */
+
+.memorama-card-front {
+
+  background: white;
+
+  border: 3px solid #ff7300;
+
+  transform: rotateY(180deg);
+
+}
+
+
+/* Imagen */
+
+.memorama-card-front img {
+
+  width: 75%;
+
+  height: 75%;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+}
+
+
+/* -------------------------
+   PAREJA ENCONTRADA
+------------------------- */
+
+.memorama-card.matched {
+
+  pointer-events: none;
+
+}
+
+
+.memorama-card.matched
+.memorama-card-front {
+
+  opacity: 0.65;
+
+}
+
+
+/* -------------------------
+   RESULTADO FINAL
+------------------------- */
+
+.memorama-result {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-bottom: 40px;
+
+}
+
+
+.memorama-win {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 15px;
+
+  text-align: center;
+
+}
+
+
+.memorama-win h3 {
+
+  margin: 0;
+
+  font-family: "League Spartan", sans-serif;
+
+  font-size: 40px;
+
+}
+
+
+.memorama-win p {
+
+  margin: 0;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 18px;
+
+}
+
+
+/* -------------------------
+   BOTÓN REINICIAR
+------------------------- */
+
+.memorama-restart-button {
+
+  width: 220px;
+
+  height: 60px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background: #ff7300;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 0 #b84f00;
+
+}
+
+
+.memorama-restart-button:active {
+
+  transform: translateY(5px);
+
+  box-shadow: 0 2px 0 #b84f00;
+
+}
+
+
+
+
+/* Atrapa la pelota */
+
+.atrapalapelota-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.atrapalapelota-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/atrapapelota2.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+/* Contenido inferior */
+
+.atrapalapelota-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.atrapalapelota-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.atrapalapelota-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* HOMERUN.JS */
+
+/* Homerun */
+
+.homerun-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.homerun-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/homerun2.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+/* Contenido inferior */
+
+.homerun-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.homerun-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.homerun-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* HOMERUN JUEGO */
+
+/* pantalla inicial */
+
+.homerun-start {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 18px;
+
+}
+
+
+/* boton comenzar */
+
+.homerun-start-button {
+
+  width: 220px;
+
+  height: 65px;
+
+  margin-top: 20px;
+
+  margin-bottom: 40px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background: #0074c7;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 0 #004c85;
+
+  animation: startPulse 1.5s infinite;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+/* Al presionar */
+
+.homerun-start-button:active {
+
+  transform: translateY(6px);
+
+  box-shadow: 0 2px 0 #004c85;
+
+}
+
+
+/* zona de juego */
+
+.homerun-game {
+
+  width: 100%;
+
+  display: none;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+
+}
+
+
+.homerun-game h2 {
+
+  font-family: "Nunito", sans-serif;
+
+}
+
+
+/* Cuando comienza */
+
+.homerun-game.show {
+
+  display: flex;
+
+  animation: gameAppear 0.4s ease;
+
+}
+
+
+/* Ocultar introducción */
+
+.homerun-start.hide {
+
+  display: none;
+
+}
+
+/* Área principal del juego */
+
+.homerun-game-area {
+
+  width: calc(100% - 30px);
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 25px;
+
+}
+
+
+/* Zona donde se mueve la pelota */
+
+.homerun-track {
+
+  width: 100%;
+  height: 180px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #028f0d;
+
+  border-radius: 20px;
+
+}
+
+
+/* Zona perfecta de bateo */
+
+.homerun-hit-zone {
+
+  width: 60px;
+  height: 100%;
+
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  transform: translateX(-50%);
+
+  background: rgb(254, 255, 255);
+
+}
+
+
+/* Pelota */
+
+.homerun-ball {
+
+  width: 60px;
+  height: 60px;
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background: red;
+
+}
+
+
+/* Resultado */
+
+.homerun-result {
+
+  min-height: 40px;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 26px;
+
+  font-weight: 800;
+
+  text-align: center;
+
+}
+
+
+/* Botón batear */
+
+.homerun-hit-button {
+
+  width: 220px;
+  height: 65px;
+
+  border: none;
+  border-radius: 40px;
+
+  background: #0074c7;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  margin-bottom: 40px;
+
+  box-shadow: 0 8px 0 #004c85;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+.homerun-hit-button:active {
+
+  transform: translateY(6px);
+
+  box-shadow: 0 2px 0 #004c85;
+
+}
+
+.homerun-hit-button:disabled {
+
+  cursor: default;
+  opacity: 0.6;
+  transform: none;
+
+}
+
+
+
+/* ATRAPA LA PELOTA JUEGO */
+
+/* pantalla inicial */
+
+.atrapalapelota-start {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+/* boton comenzar */
+
+.atrapalapelota-start-button {
+  width: 220px;
+  height: 65px;
+
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  border: none;
+  border-radius: 40px;
+
+  background: #ff191d;
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 0 #a90003;
+
+  animation: startPulse 1.5s infinite;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+/* Al presionar */
+
+.atrapalapelota-start-button:active {
+  transform: translateY(6px);
+
+  box-shadow: 0 2px 0 #a90003;
+}
+
+
+/* animacion */
+
+@keyframes startPulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* zona de juego */
+
+.atrapalapelota-game {
+  width: 100%;
+
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.atrapalapelota-game h2 {
+  font-family: "Nunito", sans-serif;
+}
+
+
+
+/* Cuando comienza */
+
+.atrapalapelota-game.show {
+  display: flex;
+
+  animation: gameAppear 0.4s ease;
+}
+
+
+/* Ocultar introducción */
+
+.atrapalapelota-start.hide {
+  display: none;
+}
+
+
+/* Animación al entrar */
+
+@keyframes gameAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.atrapalapelota-game-area {
+  width: calc(100% - 30px);
+  max-width: 500px;
+  height: 400px;
+
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  margin-bottom: 40px;
+
+  background-image: url("../images/beiscamp.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Pelota */
+
+.atrapalapelota-ball {
+  width: 65px;
+  height: 65px;
+
+  position: absolute;
+
+  border: none;
+  background: transparent;
+
+  background-image: url("../images/pelotaa.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+  z-index: 10;
+
+  transition:
+    left 0.15s ease,
+    top 0.15s ease,
+    transform 0.1s ease;
+}
+
+
+/* Pequeña reacción al tocar */
+
+.atrapalapelota-ball:active {
+
+  transform: scale(0.85);
+
+}
+
+.atrapalapelota-result {
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  color: white;
+
+}
+
+
+.atrapalapelota-result h2 {
+
+  margin: 0;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+}
+
+
+.atrapalapelota-result p {
+
+  margin: 0;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 18px;
+
+}
+
+
+.atrapalapelota-final-score {
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 60px;
+
+  font-weight: 900;
+
+}
+
+
+/* Botón jugar de nuevo */
+
+.atrapalapelota-restart-button {
+
+  width: 220px;
+  height: 60px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background: #ff191d;
+
+  color: white;
+
+  font-family: "Nunito", sans-serif;
+
+  font-size: 19px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 0 #a90003;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+}
+
+
+.atrapalapelota-restart-button:active {
+
+  transform: translateY(5px);
+
+  box-shadow: 0 2px 0 #a90003;
+
+}
+
+/* ------ FIN GAMES.JS ------ */
+
+
+/* ------ TRIVIA.JS ------ */
+.trivia-screen {
+  width: 100%;
+  min-height: 100%;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 53px;
+}
+
+
+/* Imagen principal */
+
+.trivia-banner {
+  width: 100%;
+  height: 443px;
+
+  background-image: url("../images/trivia.png");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px 20px 3px;
+}
+
+
+/* Título sobre la imagen */
+
+.trivia-banner-title {
+  width: 100%;
+  max-width: 866px;
+
+  text-align: center;
+
+  color: white;
+
+  font-family: 'League Gothic', sans-serif;
+  font-size: clamp(45px, 13vw, 195px);
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+
+/* Contenido inferior */
+
+.trivia-content {
+  width: 819px;
+  max-width: calc(100% - 40px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 41px;
+}
+
+
+/* Título */
+
+.trivia-content h1 {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'League Spartan', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* Descripción */
+
+.trivia-content p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  color: black;
+
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.trivia-clubs {
+  width: 100%;
+  max-width: 1371px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 60px 63px;
+
+  padding: 0 30px 50px;
+}
+
+
+/* Tarjeta */
+
+.trivia-club {
+  width: 100%;
+  height: 198px;
+
+  border: none;
+  border-radius: 28px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.trivia-club:hover {
+  transform: scale(1.02);
+  filter: brightness(1.08);
+}
+
+
+/* Efecto al presionar */
+
+.trivia-club:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 700px) {
+
+  .trivia-clubs {
+    grid-template-columns: 1fr;
+
+    gap: 23px;
+
+    width: 100%;
+
+    padding: 0 20px 40px;
+  }
+
+  .trivia-club {
+    height: 198px;
+  }
+
+}
+/* ------ FIN TRIVIA.JS ------ */
+
+
+/* ------ DISEÑO DE LOS .JS DE CADA EQUIPO ------ */
+.trivia-team-screen {
+    width: 430px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 18px;
+    display: flex;
+}
+
+.trivia-team-banner {
+    width: 100%;
+    height: 163px;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+
+    .trivia-team-screen {
+        width: 100%;
+    }
+
+    .trivia-team-banner {
+        width: 100%;
+        height: 220px;
+    }
+
+    .trivia-team-info {
+        width: 500px;
+    }
+
+}
+
+.trivia-team-info {
+    width: 364px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+
+.trivia-team-title {
+    align-self: stretch;
+    text-align: center;
+    color: black;
+    font-size: 32px;
+    font-family: "League Gothic";
+    font-weight: 400;
+    letter-spacing: 2.24px;
+    word-wrap: break-word;
+}
+
+.trivia-team-description {
+    align-self: stretch;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: "Libre Franklin";
+    font-weight: 200;
+    letter-spacing: 0.75px;
+    word-wrap: break-word;
+}
+/* ------ FIN DISEÑO DE LOS .JS DE CADA EQUIPO ------ */
+
+
+/* ------ DISEÑO DE PREGUNTAS DE CADA EQUIPO ------ */
+.trivia-game {
+    width: min(1293px, 100%);
+    padding: 30px 20px 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.trivia-progress {
+    font-family: "Libre Franklin";
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.trivia-question {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0;
+
+    text-align: center;
+
+    color: black;
+
+    font-family: "League Spartan";
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.trivia-options {
+    width: 100%;
+    max-width: 1293px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.trivia-option {
+    min-height: 220px;
+
+    border: none;
+    border-radius: 28px;
+
+    background-image: url("../images/rojo.png");
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+
+    font-family: "Jaro";
+    font-size: 90px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.trivia-option:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 767px) {
+
+    .trivia-game {
+        width: 100%;
+        padding: 25px 18px 100px;
+        gap: 20px;
+    }
+
+    .trivia-progress {
+        font-size: 14px;
+    }
+
+    .trivia-question {
+        font-size: 28px;
+        line-height: 1.1;
+    }
+
+    .trivia-options {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .trivia-option {
+        width: 100%;
+        min-height: 110px;
+
+        border-radius: 20px;
+
+        font-size: 60px;
+    }
+
+}
+
+.trivia-game-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.trivia-reward-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    animation:
+        rewardOverlayIn 0.3s ease;
+}
+
+.trivia-reward-modal {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 30px 24px;
+
+    animation:
+        rewardCardIn 0.6s ease;
+}
+
+.trivia-reward-modal-card {
+
+    width: min(280px, 75vw);
+
+    height: auto;
+
+    border-radius: 18px;
+
+    animation:
+        rewardCardFloat 2s ease-in-out infinite;
+}
+
+.trivia-reward-congrats-image {
+    width: 280px;
+    max-width: 80vw;
+    height: auto;
+}
+
+.trivia-reward-continue {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.trivia-reward-continue img {
+    width: 190px;
+    height: auto;
+    display: block;
+}
+
+@keyframes rewardOverlayIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes rewardCardIn {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(0.5)
+            rotate(-8deg);
+    }
+
+    70% {
+        transform:
+            scale(1.08)
+            rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+
+}
+
+@keyframes rewardCardFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+.trivia-reward-overlay.closing {
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+/* ------ FIN DE DISEÑO DE PREGUNTAS DE CADA EQUIPO ------ */
+
+
+/* ------ DISEÑO DE MENSAJE FINAL AL TERMINAR LA TRIVIA ------ */
+.trivia-result {
+    width: 269px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 37px;
+
+    margin: 40px auto;
+}
+
+.trivia-result-title {
+    width: 100%;
+
+    text-align: center;
+
+    color: black;
+
+    font-family: "Jaro";
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.trivia-score {
+    width: 100%;
+
+    text-align: center;
+
+    color: #7B0000;
+
+    font-family: "Jaro";
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.trivia-restart {
+    width: 269px;
+    height: 92px;
+
+    border: none;
+    border-radius: 28px;
+
+    background-image: url("../images/negro.png");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-family: "Jaro";
+    font-size: 36px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.trivia-restart:hover {
+    transform: scale(1.03);
+}
+
+.trivia-restart:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 767px) {
+
+    .trivia-result {
+        width: min(269px, 100%);
+        padding: 0 20px;
+        box-sizing: border-box;
+
+        gap: 30px;
+    }
+
+    .trivia-result-title {
+        font-size: 48px;
+    }
+
+    .trivia-score {
+        font-size: 40px;
+    }
+
+    .trivia-restart {
+        width: 100%;
+        max-width: 269px;
+    }
+
+}
+/* ------ FIN DE DISEÑO DE MENSAJE FINAL AL TERMINAR LA TRIVIA ------ */
+
+
+/* ------ PROFILE.JS ------ */
+
+.profile-screen {
+    width: 430px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 69px;
+
+    margin: 0 auto;
+}
+
+
+/* ENCABEZADO */
+
+.profile-header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header-background {
+    width: 100%;
+    height: 186px;
+
+    background: #410000;
+}
+
+.profile-user {
+    width: 207px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: -64.5px;
+}
+
+.profile-avatar {
+    width: 129px;
+    height: 129px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.profile-user-info {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.profile-username {
+    width: 100%;
+
+    text-align: center;
+
+    color: black;
+
+    font-family: "League Spartan";
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.profile-edit-button {
+    width: 128px;
+    height: 25px;
+
+    padding: 5px 32px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #212340;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-family: "League Gothic";
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+
+    .profile-header-background {
+        width: 100vw;
+        height: 186px;
+    }
+
+    .profile-user {
+        width: 320px;
+        margin-top: -90px;
+        gap: 18px;
+    }
+
+    .profile-avatar {
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile-user-info {
+        gap: 22px;
+    }
+
+    .profile-username {
+        font-size: 34px;
+    }
+
+    .profile-edit-button {
+        width: 150px;
+        height: 34px;
+
+        font-size: 20px;
+    }
+
+}
+
+/* editar datos */
+
+.profile-edit-form {
+    width: 217px;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.profile-input {
+    width: 217px;
+    height: 38px;
+
+    box-sizing: border-box;
+
+    border: none;
+    border-bottom: 2px solid #212340;
+
+    background: transparent;
+
+    text-align: center;
+
+    color: black;
+
+    font-family: "League Spartan";
+    font-size: 20px;
+
+    outline: none;
+}
+
+.profile-input::placeholder {
+    color: #000;
+    opacity: 1;
+}
+
+.profile-input:focus {
+    border-bottom: 2px solid #7B0000;
+}
+
+
+/* botones de edicion: guardar y cancelar */
+
+.profile-edit-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.profile-edit-action {
+    width: 138px;
+    height: 25px;
+
+    padding: 5px 32px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #212340;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-family: "League Gothic";
+    font-size: 16px;
+    font-weight: 400;
+
+    letter-spacing: 0.8px;
+
+    cursor: pointer;
+}
+
+/* ------ FIN DE PROFILE.JS ------ */
+
+
+/* ------ GALLERY.JS ------ */
+.gallery-screen {
+    width: 430px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 auto;
+}
+
+
+.gallery-header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 25px;
+}
+
+.gallery-label {
+    color: #7B0000;
+
+    font-family: "League Gothic";
+    font-size: 18px;
+
+    letter-spacing: 1px;
+}
+
+.gallery-title {
+    margin-top: 5px;
+
+    color: black;
+
+    font-family: "League Spartan";
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.gallery-progress {
+    margin-top: 8px;
+
+    color: #000;
+
+    font-family: "Nunito Sans";
+    font-size: 14px;
+}
+
+
+.gallery-cards {
+    width: 390px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+    margin-bottom: 30px;
+}
+
+.gallery-card {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.gallery-card-image {
+    width: 100%;
+    aspect-ratio: 0.7;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+}
+
+.gallery-card-name {
+    margin-top: 7px;
+
+    text-align: center;
+
+    color: black;
+
+    font-family: "League Spartan";
+    font-size: 18px;
+}
+
+
+.gallery-card.locked .gallery-card-image {
+    filter: grayscale(1);
+    opacity: 0.45;
+}
+
+.gallery-card.locked .gallery-card-name {
+    color: #999;
+}
+
+
+.gallery-card.selected {
+    transform: scale(1.03);
+}
+
+
+@media (min-width: 768px) {
+
+    .gallery-screen {
+        width: 100%;
+    }
+
+    .gallery-header {
+        padding-top: 35px;
+    }
+
+    .gallery-label {
+        font-size: 22px;
+    }
+
+    .gallery-title {
+        font-size: 42px;
+    }
+
+    .gallery-progress {
+        font-size: 17px;
+    }
+
+    .gallery-cards {
+        width: 900px;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 25px;
+
+        margin-top: 40px;
+    }
+
+    .gallery-card-name {
+        font-size: 21px;
+    }
+
+}
+/* ------ FIN DE GALLERY.JS ------ */

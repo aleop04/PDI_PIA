@@ -30,49 +30,82 @@ body {
     overflow-x: hidden;
 }
 
-  /* ------ bottom nav en pantallas despues de login y register ------ */
+/* ------ bottom nav en pantallas despues de login y register ------ */
+
 #bottom-nav {
-  width: 100%;
-  flex-shrink: 0;
 
-  display: flex;
+    width: 100%;
 
-  background: #FBF7EC;
+    flex-shrink: 0;
 
-  border-top: 1px solid rgba(28, 42, 30, 0.08);
+    display: flex;
 
-  padding: 9px 6px 12px;
+    background: #FBF7EC;
+
+    border-top: 1px solid rgba(28, 42, 30, 0.08);
+
+    padding: 9px 6px 12px;
+
+
+    /* IMPORTANTE PARA EL ESCÁNER */
+
+    position: relative;
+
+    z-index: 100;
+
 }
+
 
 .nav-btn {
-  flex: 1;
 
-  display: flex;
-  flex-direction: column;
+    flex: 1;
 
-  align-items: center;
-  justify-content: center;
+    display: flex;
 
-  gap: 3px;
+    flex-direction: column;
 
-  border: none;
-  background: none;
+    align-items: center;
 
-  cursor: pointer;
+    justify-content: center;
 
-  padding: 4px 0;
+    gap: 3px;
 
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 9px;
-  font-weight: 600;
+    border: none;
 
-  color: rgba(28, 42, 30, 0.5);
+    background: none;
+
+    cursor: pointer;
+
+    padding: 4px 0;
+
+    font-family: 'Nunito Sans', sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: rgba(28, 42, 30, 0.5);
+
+
+    /* Los botones deben seguir recibiendo los toques */
+
+    position: relative;
+
+    z-index: 101;
+
+    pointer-events: auto;
+
 }
+
 
 .nav-btn.active {
-  color: #B10000;
+
+    color: #B10000;
+
 }
-  /* ------ fin de bottom nav en pantallas despues de login y register ------ */
+
+
+/* ------ fin de bottom nav en pantallas despues de login y register ------ */
 
   /* ------ header en pantallas despues de login y registrar (menos scan.js) ------ */
 
@@ -1346,109 +1379,217 @@ body {
 
 
 /* ------ SCAN.JS ------ */
+
+
+/* Pantalla completa del escáner */
+
 .scan-screen {
-  width: 100%;
-  height: 100%;
-  background: black;
-  position: relative;
-  overflow: hidden;
+
+    width: 100%;
+
+    height: calc(100dvh - 55px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
 }
+
+
 /* Header azul */
+
 .scan-header {
-  width: 100%;
-  height: 71px;
 
-  background: #212340;
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 71px;
 
-  flex-shrink: 0;
+    background: #212340;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
 }
+
+
 .scan-header img {
-  width: 279px;
-  height: auto;
-  object-fit: contain;
+
+    width: 279px;
+
+    height: auto;
+
+    object-fit: contain;
+
 }
-/* Área donde ocurre el escaneo */
+
+
+/* Área completa de cámara */
+
 .scan-camera {
-  position: absolute;
 
-  top: 71px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    position: relative;
 
-  background: black;
+    flex: 1;
+
+    width: 100%;
+
+    min-height: 0;
+
+    overflow: hidden;
+
 }
+
 /* Marco de escaneo */
+
 .scan-frame {
-  position: absolute;
 
-  top: 18%;
-  left: 12%;
-  right: 12%;
-  bottom: 30%;
+    position: absolute;
+
+    top: 18%;
+
+    left: 12%;
+
+    right: 12%;
+
+    bottom: 30%;
+
+    z-index: 2;
+
+    pointer-events: none;
+
 }
+
+
 /* Esquinas */
+
 .scan-corner {
-  position: absolute;
 
-  width: 30px;
-  height: 30px;
+    position: absolute;
 
-  border-color: rgba(255, 255, 255, 0.9);
+    width: 30px;
+
+    height: 30px;
+
 }
+
+
 /* Superior izquierda */
+
 .scan-corner-tl {
-  top: 0;
-  left: 0;
 
-  border-top: 3px solid white;
-  border-left: 3px solid white;
+    top: 0;
+
+    left: 0;
+
+    border-top: 3px solid white;
+
+    border-left: 3px solid white;
+
 }
+
+
 /* Superior derecha */
+
 .scan-corner-tr {
-  top: 0;
-  right: 0;
 
-  border-top: 3px solid white;
-  border-right: 3px solid white;
+    top: 0;
+
+    right: 0;
+
+    border-top: 3px solid white;
+
+    border-right: 3px solid white;
+
 }
+
+
 /* Inferior izquierda */
+
 .scan-corner-bl {
-  bottom: 0;
-  left: 0;
 
-  border-bottom: 3px solid white;
-  border-left: 3px solid white;
+    bottom: 0;
+
+    left: 0;
+
+    border-bottom: 3px solid white;
+
+    border-left: 3px solid white;
+
 }
+
+
 /* Inferior derecha */
+
 .scan-corner-br {
-  bottom: 0;
-  right: 0;
 
-  border-bottom: 3px solid white;
-  border-right: 3px solid white;
+    bottom: 0;
+
+    right: 0;
+
+    border-bottom: 3px solid white;
+
+    border-right: 3px solid white;
+
 }
-/* Texto */
+
+
+/* Texto de instrucción */
+
 .scan-instruction {
-  position: absolute;
 
-  top: 60%;
-  left: 0;
-  right: 0;
+    position: absolute;
 
-  text-align: center;
+    top: 60%;
 
-  color: white;
+    left: 0;
 
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
+    right: 0;
 
-  padding: 0 20px;
+    z-index: 3;
+
+    text-align: center;
+
+    color: white;
+
+    font-family: "Nunito Sans", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 400;
+
+    padding: 0 20px;
+
+    pointer-events: none;
+
+}
+
+.scan-ar-container {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* Elementos que crea MindAR */
+
+.scan-ar-container video,
+.scan-ar-container canvas {
+    pointer-events: none;
 }
 /* ------ FIN DE SCAN.JS ------ */
 

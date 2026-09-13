@@ -81,6 +81,13 @@ app.use(
     )
 );
 
+app.use(
+    "/assets",
+    express.static(
+        path.join(projectRoot, "assets")
+    )
+);
+
 
 app.get("/", (req, res) => {
 
